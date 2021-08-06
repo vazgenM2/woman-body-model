@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Form</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <form id="or-hm" action="" method="post">
+        <!-- 
+            !!!ԿԱՐևՈՐ!!!
+
+            HTML-ում չփոփոխե'ք  <p class="code">-ը և իր արժեքը 
+                (
+                    չի կարելի նույնիսկ գրել այն հետևյալ կերպ՝
+                    <p class="code">
+                        Արժեք
+                    </p>
+                    JS-ում այն ընդունվում է որպես "\n    Արժեք\n"
+                )
+         -->
+        <div id="add-remove" style="display: none;">+</div>
+        <div id="hm">
+            <div id="h1">
+                <p class="fhd">Front</p>
+                <p class="mnhd"></p>
+                <div class="cont">
+                    <img src="./f_assets/siluet.png" class="front-woman" alt="">
+
+                    <div class="head-div"></div>
+                    <div class="head">
+                        <span id="m1">
+                            <p class="code">chakat</p>
+                            <p class="mn">
+                                Ճակատ
+                            </p>
+                        </span>
+                        <span id="m2">
+                            <p class="code">demq</p>
+                            <p class="mn">
+                                Դեմք
+                            </p>
+                        </span>
+                        <span id="m33" class="div-part">
+                            <p class="code">akanjner</p>
+                            <p class="mn">
+                                Ականջներ
+                            </p>
+                        </span>
+                        <span id="m30" class="div-part">
+                            <p class="code">aytoskrer</p>
+                            <p class="mn">
+                                Այտոսկրեր
+                            </p>
+                        </span>
+                        <span id="m31" class="div-part">
+                            <p class="code">aytoskrer</p>
+                            <p class="mn">
+                                Այտոսկրեր
+                            </p>
+                        </span>
+                        <span id="m34" class="div-part">
+                            <p class="code">kzak</p>
+                            <p class="mn">
+                                Կզակ
+                            </p>
+                        </span>
+                        <span id="m32" class="div-part">
+                            <p class="code">v-shurt</p>
+                            <p class="mn">
+                                Վերին շուրթ
+                            </p>
+                        </span>
+                    </div>
+                    <span id="m3">
+                        <p class="code">paranoc</p>
+                        <p class="mn">
+                            Պարանոց
+                        </p>
+                    </span>
+                    <span id="m4">
+                        <p class="code">dekolte</p>
+                        <p class="mn">
+                            Դեկոլտե
+                        </p>
+                    </span>
+                    <!--<span id="m5">
+                        <p class="code">tevataker</p>
+                        <p class="mn">
+                            Թևատակեր
+                        </p>
+                    </span> -->
+                    <span id="m6">
+                        <p class="code">tevataker</p>
+                        <p class="mn">
+                            Թևատակեր
+                        </p>
+                    </span>
+                    <span id="m7">
+                        <p class="code">user</p>
+                        <p class="mn">
+                            Ուսեր
+                        </p>
+                    </span>
+                    <span id="m8">
+                        <p class="code">user</p>
+                        <p class="mn">
+                            Ուսեր
+                        </p>
+                    </span>
+                    <span id="m9">
+                        <p class="code">por1/3</p>
+                        <p class="mn">
+                            Փոր 1/3 (Վերև)
+                        </p>
+                    </span>
+                    <span id="m10">
+                        <p class="code">por1/3</p>
+                        <p class="mn">
+                            Փոր 1/3 (Մեջտեղ)
+                        </p>
+                    </span>
+                    <span id="m11">
+                        <p class="code">por1/3</p>
+                        <p class="mn">
+                            Փոր 1/3 (Ներքև)
+                        </p>
+                    </span>
+                    <span id="m12">
+                        <p class="code">bikini</p>
+                        <p class="mn">
+                            Բիկինի
+                        </p>
+                    </span>
+                    <span id="m13">
+                        <p class="code">x-bikini</p>
+                        <p class="mn">
+                            Խորը Բիկինի
+                        </p>
+                    </span>
+                    <span id="m14">
+                        <p class="code">krcqer</p>
+                        <p class="mn">
+                            Կրծքեր
+                        </p>
+                    </span>
+                    <span id="m15">
+                        <p class="code">bazukner</p>
+                        <p class="mn">
+                            Բազուկ
+                        </p>
+                    </span>
+                    <span id="m16">
+                        <p class="code">bazukner</p>
+                        <p class="mn">
+                            Բազուկ
+                        </p>
+                    </span>
+                    <span id="m17">
+                        <p class="code">naxabazukner</p>
+                        <p class="mn">
+                            Նախաբազուկ
+                        </p>
+                    </span>
+                    <span id="m18">
+                        <p class="code">naxabazukner</p>
+                        <p class="mn">
+                            Նախաբազուկ
+                        </p>
+                    </span>
+                    <span id="m19">
+                        <p class="code">dzerqer</p>
+                        <p class="mn">
+                            Ձեռքեր
+                        </p>
+                    </span>
+                    <span id="m20">
+                        <p class="code">dzerqer</p>
+                        <p class="mn">
+                            Ձեռքեր
+                        </p>
+                    </span>
+                    <span id="m21">
+                        <p class="code">matner</p>
+                        <p class="mn">
+                            Մատներ
+                        </p>
+                    </span>
+                    <span id="m22">
+                        <p class="code">matner</p>
+                        <p class="mn">
+                            Մատներ
+                        </p>
+                    </span>
+                    <!-- <span id="m23">
+                        <p class="code">azdrer</p>
+                        <p class="mn">
+                            Ազդրեր
+                        </p>
+                    </span> -->
+                    <span id="m24">
+                        <p class="code">azdrer</p>
+                        <p class="mn">
+                            Ազդրեր
+                        </p>
+                    </span>
+                    <!-- <span id="m25">
+                        <p class="code">srunqner</p>
+                        <p class="mn">
+                            Սրունքներ
+                        </p>
+                    </span> -->
+                    <span id="m26">
+                        <p class="code">srunqner</p>
+                        <p class="mn">
+                            Սրունքներ
+                        </p>
+                    </span>
+                    <!-- <span id="m27">
+                        <p class="code">votqer</p>
+                        <p class="mn">
+                            Ոտքեր
+                        </p>
+                    </span> -->
+                    <span id="m28">
+                        <p class="code">votqer</p>
+                        <p class="mn">
+                            Ոտքեր
+                        </p>
+                    </span>
+                    <!-- <span id="m29" class="div-part">
+                        <p class="code">aytoskrer</p>
+                        <p class="mn">
+                            Այտոսկրեր
+                        </p>
+                    </span> -->
+
+                    <!--<span id="m34" class="div-part">
+                        <p class="code">akanjner</p>
+                        <p class="mn">
+                            Ականջներ
+                        </p>
+                    </span> -->
+                </div>
+            </div>
+            <div id="checkList">
+                <div id="c">
+
+                </div>
+                <hr id="p">
+                <div class="flex aic jcb w90">
+                    <p id="finalPrice">
+                        0
+                    </p>
+                </div>
+                <p id="ofrp">Փաթեթներ`</p>
+                <div id="offers">
+
+                </div>
+                <div class="submit-btns">
+                    <a href="#" class="done-btn">Հաստատել</a>
+                    <a href="#" class="clear-btn">Մաքրել</a>
+                </div>
+
+            </div>
+            <div id="h2">
+                <p class="fhd">Back</p>
+                <p class="mnhd"></p>
+                <div class="cont cont-back">
+                    <img src="./f_assets/siluet2.png" class="back-woman" alt="">
+                    <span id="m35">
+                        <p class="code">cocrak</p>
+                        <p class="mn">
+                            Ծոծրակ
+                        </p>
+                    </span>
+                    <span id="m36">
+                        <p class="code">user</p>
+                        <p class="mn">
+                            Ուսեր
+                        </p>
+                    </span>
+                    <span id="m39">
+                        <p class="code">user</p>
+                        <p class="mn">
+                            Ուսեր
+                        </p>
+                    </span>
+                    <span id="m40">
+                        <p class="code">bazukner</p>
+                        <p class="mn">
+                            Բազուկ
+                        </p>
+                    </span>
+                    <span id="m41">
+                        <p class="code">bazukner</p>
+                        <p class="mn">
+                            Բազուկ
+                        </p>
+                    </span>
+                    <span id="m42">
+                        <p class="code">naxabazukner</p>
+                        <p class="mn">
+                            Նախաբազուկ
+                        </p>
+                    </span>
+                    <span id="m43">
+                        <p class="code">naxabazukner</p>
+                        <p class="mn">
+                            Նախաբազուկ
+                        </p>
+                    </span>
+                    <span id="m44">
+                        <p class="code">dzerqer</p>
+                        <p class="mn">
+                            Ձեռքեր
+                        </p>
+                    </span>
+                    <span id="m45">
+                        <p class="code">dzerqer</p>
+                        <p class="mn">
+                            Ձեռքեր
+                        </p>
+                    </span>
+                    <span id="m46">
+                        <p class="code">matner</p>
+                        <p class="mn">
+                            Մատներ
+                        </p>
+                    </span>
+                    <span id="m47">
+                        <p class="code">matner</p>
+                        <p class="mn">
+                            Մատներ
+                        </p>
+                    </span>
+                    <span id="m48">
+                        <p class="code">azdrer</p>
+                        <p class="mn">
+                            Ազդրեր
+                        </p>
+                    </span>
+                    <!-- <span id="m49">
+                        <p class="code">azdrer</p>
+                        <p class="mn">
+                            Ազդրեր
+                        </p>
+                    </span>
+                    <span id="m50">
+                        <p class="code">srunqner</p>
+                        <p class="mn">
+                            Սրունքներ
+                        </p>
+                    </span> -->
+                    <span id="m51">
+                        <p class="code">srunqner</p>
+                        <p class="mn">
+                            Սրունքներ
+                        </p>
+                    </span>
+                    <span id="m52">
+                        <p class="code">akanjner</p>
+                        <p class="mn">
+                            Ականջներ
+                        </p>
+                    </span>
+                    <span id="m53">
+                        <p class="code">votqer</p>
+                        <p class="mn">
+                            Ոտքեր
+                        </p>
+                    </span>
+                    <span id="m54">
+                        <p class="code">x-bikini</p>
+                        <p class="mn">
+                            Խորը Բիկինի
+                        </p>
+                    </span>
+                    <span id="m55">
+                        <p class="code">nstatex</p>
+                        <p class="mn">
+                            Նստատեղեր
+                        </p>
+                    </span>
+                    <span id="m56">
+                        <p class="code">mejq1/3</p>
+                        <p class="mn">
+                            Մեջք 1/3 (Ներքև)
+                        </p>
+                    </span>
+                    <!-- <span id="m57">
+                        <p class="code">tevataker</p>
+                        <p class="mn">
+                            Թևատակեր
+                        </p>
+                    </span> -->
+                    <span id="m58">
+                        <p class="code">tevataker</p>
+                        <p class="mn">
+                            Թևատակեր
+                        </p>
+                    </span>
+                    <span id="m59">
+                        <p class="code">mejq1/3</p>
+                        <p class="mn">
+                            Մեջք 1/3 (Մեջտեղ)
+                        </p>
+                    </span>
+                    <span id="m60">
+                        <p class="code">mejq1/3</p>
+                        <p class="mn">
+                            Մեջք 1/3 (Վերև)
+                        </p>
+                    </span> -->
+                </div>
+            </div>
+        </div>
+    </form>
+    <script src="script.js"></script>
+</body>
+
+</html>
