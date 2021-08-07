@@ -28,7 +28,7 @@ for (let element of back_hm) {                                                 /
 let ae = []; // All Elements
 let aeObj = {}; // Just Object for all Elements
 
-for (let i = 1; i <= 60; i++) {
+for (let i = 1; i <= 62; i++) {
     const e = document.querySelector(`#m${i}`);
     if (e != null) {
         ae.push(e)
@@ -195,8 +195,9 @@ let pl = [
     },
     {
         name: "Ականջներ",
+        text: 'Կատարվում է լուսարձակումով։ 1 լուսարձակումը` <br> Դեմքի հատվածում - 130 դր,<br> Մարմնի հատվածում - 100 դր,<br> Ձեռքերի և ոտքերի հատվածում - 30 դր:',
         p: ["akanjner"],
-        price: 5000,
+        price: '',
     },
     {
         name: "Ոտքեր",
@@ -214,7 +215,7 @@ let ofl = [
     {
         name: "Դեմք + պարանոց",
         p: ["demq", "chakat", "paranoc"],
-        price: 11000,
+        price: 10000,
     },
     {
         name: "Դեմք + պարանոց + ծոծրակ",
@@ -234,17 +235,23 @@ let pfp = document.querySelector("p#finalPrice");
 let cl = document.querySelector("#checkList #c");
 let ofe = document.querySelector("#offers");
 let ofs = []; // Offers
-
+let ofsArr = []
 
 for (let element of ae) {
     element.addEventListener("click", () => {
         let pn = element.querySelector("p.code");
+
+        // OFFERS
+        ofs = [];
+        ofsArr = []
+
         if (element.classList.contains("active")) {
             for (let i in ol) {
                 if (ol[i] == pn.innerText) {
                     ol.splice(i, 1);
                 }
             }
+
             for (let elem of ae) {
                 let pnn = elem.querySelector("p.code");
                 if (pnn.innerText == pn.innerText && pn.innerText == pn.innerText.split("1/3")) {
@@ -287,6 +294,7 @@ for (let element of ae) {
 
         } else {
             ol.push(pn.innerText);
+
             for (let elem of ae) {
                 let pnn = elem.querySelector("p.code");
                 if (pnn.innerText == pn.innerText && pn.innerText == pn.innerText.split("1/3")) {
@@ -294,8 +302,10 @@ for (let element of ae) {
                 }
             }
             element.classList.add("active")
+
             for (let elem of pl) {
                 if (elem.p[0] == pn.innerText) {
+                    // if (!ofsArr.includes(elem.p[0])) fp += elem.price;
                     fp += elem.price;
                 }
             }
@@ -337,41 +347,77 @@ for (let element of ae) {
 
         }
 
-        // Offers \\
-
-        ofs = [];
-        for (let i in ofl) {
-            let checked = 0;
-            let cg = ofl[i].p.length;
-            for (let k in ofl[i].p) {
-                for (let j in ol) {
-                    if (ofl[i].p[k] == ol[j]) {
-                        checked++;
-                    }
-                }
-            }
-            if (checked == cg) {
-                ofs.push(ofl[i]);
-            }
-        }
-        if (fp >= 90000) {
-            ofs.push({
-                name: "Ամբողջ մարմին՝ 90000֏ (Միայն Կոմիտաս 37 և Գայի պողոտա 16 | Megamall մասնաճյուղերում)",
+        if (fp >= 90000 && ol.length >= 4) {
+            ofs[0] = {
+                name: "Ամբողջ մարմին (Միայն Կոմիտաս 37 և Գայի պողոտա 16 | Megamall մասնաճյուղերում)",
                 price: 90000,
-            })
+            }
+            fp = 90000
+            for (let el of ol) {
+                ofsArr.push(el)
+            }
         }
-        if (fp >= 45000 && ol.length == 2) {
-            ofs.push({
-                name: "Երկուսը միասին 45000",
+        else if (fp >= 45000 && ol.length == 2) {
+            ofs[0] = {
+                name: "Երկուսը միասին",
                 price: 45000,
-            })
+            }
+            fp = 45000
+            for (let el of ol) {
+                ofsArr.push(el)
+            }
         }
         else if (fp >= 55000 && ol.length == 3) {
-            ofs.push({
-                name: "Երեքը միասին 55000",
-                price: 45000,
-            })
+            ofs[0] = {
+                name: "Երեքը միասին",
+                price: 55000,
+            }
+            fp = 55000
+            for (let el of ol) {
+                ofsArr.push(el)
+            }
         }
+        else if (ol.includes("chakat") && ol.includes("demq") && ol.includes("paranoc") && ol.includes("cocrak")) {
+            ofs[0] = {
+                name: "Դեմք + պարանոց + ծոծրակ",
+                price: 12000,
+            }
+            fp = 12000
+            ofsArr.push('chakat', "demq", "paranoc", "cocrak")
+        }
+        else if (ol.includes("demq") && ol.includes("paranoc") && ol.includes("cocrak")) {
+            ofs[0] = {
+                name: "Դեմք առանց ճակատի + պարանոց + ծոծրակ",
+                price: 11000,
+            }
+            fp = 11000
+            ofsArr.push("demq", "paranoc", "cocrak")
+        }
+        else if (ol.includes("demq") && ol.includes("paranoc") && ol.includes("chakat")) {
+            ofs[0] = {
+                name: "Դեմք + պարանոց",
+                price: 10000,
+            }
+            fp = 10000
+            ofsArr.push('chakat', "demq", "paranoc")
+        }
+
+
+        // for (let i in ofl) {
+        //     let checked = 0;
+        //     let cg = ofl[i].p.length;
+        //     for (let k in ofl[i].p) {
+        //         for (let j in ol) {
+        //             if (ofl[i].p[k] == ol[j]) {
+        //                 checked++;
+        //             }
+        //         }
+        //     }
+        //     if (checked == cg) {
+        //         ofs.push(ofl[i]);
+        //     }
+        // }
+
         ofe.innerHTML = "";
         for (let elem of ofs) {
             ofe.innerHTML += `
@@ -384,8 +430,6 @@ for (let element of ae) {
                     </p>
                 </div>
             `;
-
-
         }
 
         cl.innerHTML = "";
@@ -395,13 +439,12 @@ for (let element of ae) {
                     cl.innerHTML += `
                     <div class="flex aic jcb o-item">
                         <p class="o-name">
-                            ${prd.name}
+                            ${(prd.text) ? prd.text : prd.name}
                         </p>
-                        <p class="o-price">
+                        <p class="o-price${(prd.price) ? '' : '111'}">
                             ${prd.price}
                         </p>
-                    </div>
-                
+                    </div>  
                     `;
                 }
             }
@@ -466,5 +509,5 @@ bodyParts.map(part => {
 
 document.querySelector('.done-btn').addEventListener('click', function (e) {
     e.preventDefault()
-    if (fp && ol.length) console.log([ol, ofs, fp]);
+    if (fp && ol.length) console.log([ol, fp]);
 })

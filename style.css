@@ -278,6 +278,7 @@ form#or-hm::-webkit-scrollbar-button {
     height: 35px;
     left: 58px;
     top: 133px;
+    z-index: 5;
     background-image: url("f_assets/body_active/d.png");
 }
 
@@ -289,9 +290,9 @@ form#or-hm::-webkit-scrollbar-button {
     background-image: url("f_assets/body_active/us1.png");
 }
 #m36 {
-    left: 47px;
+    left: 48px;
     width: 26px;
-    top: 118px;
+    top: 117px;
     background-image: url("f_assets/body_active_back/us1.png");
 }
 
@@ -304,7 +305,7 @@ form#or-hm::-webkit-scrollbar-button {
 }
 #m39 {
     top: 119px;
-    left: 105px;
+    left: 106px;
     background-image: url("f_assets/body_active_back/us2.png");
 }
 #m9 {
@@ -351,11 +352,13 @@ form#or-hm::-webkit-scrollbar-button {
     left: 78px;
     top: 240px;
     background-image: url("f_assets/body_active/xor-b.png");
+    z-index: 4;
 }
 #m54 {
     top: 244px;
     left: 80px;
     background-image: url("f_assets/body_active_back/xor-k.png");
+    z-index: 4;
 }
 #m5, #m57 {
     width: 16px;
@@ -371,9 +374,14 @@ form#or-hm::-webkit-scrollbar-button {
     right: 79px;
     top: 135px;
     background-image: url("f_assets/body_active/tevatak.png");
-    /* transform: rotateY(180deg); */
 }
-
+#m58 {
+    width: 15px;
+    height: 15px;
+    right: 78px;
+    top: 150px;
+    background-image: url("f_assets/body_active_back/tevatak.png");
+}
 #m15, #m40 {
     width: 18px;
     height: 54px;
@@ -408,8 +416,9 @@ form#or-hm::-webkit-scrollbar-button {
     background-image: url("f_assets/body_active/naxabazuk1.png");
 }
 #m42 {
-    left: 10px;
-    top: 170px;
+    /* width: 28px; */
+    left: 8px;
+    top: 172px;
     background-image: url("f_assets/body_active_back/naxabazuk1.png");
 }
 #m18, #m43 {
@@ -420,8 +429,8 @@ form#or-hm::-webkit-scrollbar-button {
     background-image: url("f_assets/body_active/naxabazuk2.png");
 }
 #m43 {
-    width: 47px;
-    left: 141px;
+    width: 48px;
+    left: 142px;
     top: 181px;
     background-image: url("f_assets/body_active_back/naxabazuk2.png");
 }
@@ -434,7 +443,8 @@ form#or-hm::-webkit-scrollbar-button {
 }
 #m44 {
     background-image: url("f_assets/body_active_back/dzerqer1.png");
-    left: 2px;
+    left: 3.5px;
+    width: 11px;
     top: 210px;
 }
 #m20, #m45 {
@@ -446,7 +456,7 @@ form#or-hm::-webkit-scrollbar-button {
 }
 #m45 {
     top: 230px;
-    left: 173px;
+    left: 174px;
     background-image: url("f_assets/body_active_back/dzerqer2.png");
 }
 #m21, #m46 {
@@ -484,15 +494,15 @@ form#or-hm::-webkit-scrollbar-button {
 }
 #m48 {
     top: 250px;
-    width: 75px;
+    width: 76px;
     left: 52.5px;
     background-image: url("f_assets/body_active_back/azdrer.png");
 }
 #m24, #m49 {
-    width: 70px;
-    height: 70px;
-    right: 77px;
-    top: 242px;
+    width: 72px;
+    height: 60px;
+    right: 76px;
+    top: 243px;
     background-image: url("f_assets/body_active/azdrer.png");
 }
 
@@ -541,7 +551,7 @@ form#or-hm::-webkit-scrollbar-button {
 #m53 {
     transform: none;
     top: 397px;
-    left: 56px;
+    left: 57px;
     background-image: url("f_assets/body_active_back/votqer.png");
 }
 #m29 {
@@ -625,6 +635,14 @@ form#or-hm::-webkit-scrollbar-button {
     top: 180px;
     transform: rotate(-3deg);
     background-image: url("f_assets/body_active_back/mejq3.png");
+}
+#m62 {
+    width: 45px;
+    height: 31px;
+    left: 69px;
+    top: 127px;
+    transform: rotate(-3deg);
+    background-image: url("f_assets/body_active/krckavandak.png");
 }
 /* 
 hr#p {
