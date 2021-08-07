@@ -427,20 +427,25 @@ const plusMinus = document.querySelector('#add-remove')
 const bodyParts = [...document.querySelectorAll('#h1 span'), ...document.querySelectorAll('#h2 span')]
 let cursorX;
 let cursorY;
+let showPlusMinus = 850
 
 window.addEventListener('mousemove', function (e) {
-    if (!e.target.classList.contains('body-part')) plusMinus.style.display = 'none'
-    else if (e.target.classList.contains('active')) plusMinus.innerHTML = '-'
-    else plusMinus.innerHTML = '+'
+    if (window.innerWidth > showPlusMinus) {
+        if (!e.target.classList.contains('body-part')) plusMinus.style.display = 'none'
+        else if (e.target.classList.contains('active')) plusMinus.innerHTML = '-'
+        else plusMinus.innerHTML = '+'
+    }
 })
 
 bodyParts.map(part => {
     part.addEventListener('mousemove', function (e) {
-        cursorX = e.pageX;
-        cursorY = e.pageY;
-        plusMinus.style.display = 'block'
-        plusMinus.style.left = cursorX + 7 + 'px'
-        plusMinus.style.top = cursorY - 17 + 'px'
+        if (window.innerWidth > showPlusMinus) {
+            cursorX = e.pageX;
+            cursorY = e.pageY;
+            plusMinus.style.display = 'block'
+            plusMinus.style.left = cursorX + 7 + 'px'
+            plusMinus.style.top = cursorY - 17 + 'px'
+        }
     })
 })
 
