@@ -489,10 +489,10 @@ form#or-hm::-webkit-scrollbar-button {
     background-image: url("f_assets/body_active_back/azdrer.png");
 }
 #m24, #m49 {
-    width: 69px;
-    height: 105px;
+    width: 70px;
+    height: 70px;
     right: 77px;
-    top: 243px;
+    top: 242px;
     background-image: url("f_assets/body_active/azdrer.png");
 }
 
@@ -505,10 +505,10 @@ form#or-hm::-webkit-scrollbar-button {
 }
 
 #m26, #m51 {
-    width: 65px;
+    width: 65.5px;
     height: 90px;
-    right: 72.5px;
-    top: 315px;
+    right: 72.6px;
+    top: 316px;
     background-image: url("f_assets/body_active/srunqner.png");
 }
 #m51 {
@@ -521,8 +521,8 @@ form#or-hm::-webkit-scrollbar-button {
 #m27, #m52 {
     width: 22px;
     height: 14px;
-    left: 75px;
-    top: 463px;
+    left: 72px;
+    top: 464px;
     background-image: url("f_assets/body_active/votq.png");
 }
 #m52 {
@@ -644,7 +644,7 @@ p#finalPrice {
 }
 
 p#finalPrice::after {
-    content: "֏";
+    content: " ֏";
 }
 
 p#finalPrice::before {
