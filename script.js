@@ -44,20 +44,20 @@ for (let i = 1; i <= 60; i++) {
 ae.map(part => {
     part.classList.add('body-part')
     part.addEventListener("mouseover", () => {
-        part.style.filter = "opacity(0.4)";
         for (let el of ae) {
             if (el.querySelector("p.code").innerHTML == part.querySelector("p.code").innerHTML) {
                 el.style.filter = "opacity(0.4)";
             }
         }
+        part.style.filter = "opacity(0.6)";
     });
     part.addEventListener("mouseout", () => {
-        part.style.filter = "opacity(0.2)";
         for (let el of ae) {
             if (el.querySelector("p.code").innerHTML == part.querySelector("p.code").innerHTML) {
                 el.style.filter = "opacity(0.2)";
             }
         }
+        part.style.filter = "opacity(0.2)";
     });
 })
 
@@ -466,5 +466,5 @@ bodyParts.map(part => {
 
 document.querySelector('.done-btn').addEventListener('click', function (e) {
     e.preventDefault()
-    console.log([ol, ofs, fp]);
+    if (fp && ol.length) console.log([ol, ofs, fp]);
 })

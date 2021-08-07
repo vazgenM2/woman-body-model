@@ -202,14 +202,6 @@ form#or-hm::-webkit-scrollbar-button {
     animation: anim 8s infinite alternate-reverse; 
 }
 
-#h1 {
-    border-right: 2px solid #78787a;
-}
-
-#h2 {
-    border-left: 2px solid #78787a;
-}
-
 #h1 p.fhd, #h2 p.fhd {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     box-sizing: border-box;
@@ -225,6 +217,7 @@ form#or-hm::-webkit-scrollbar-button {
     background-size: contain;
     background-repeat: no-repeat;
     box-sizing: unset;
+    transition: 0.4s;
     cursor: pointer;
     background-position: left top;
     filter: opacity(0.15);	
@@ -238,9 +231,9 @@ form#or-hm::-webkit-scrollbar-button {
     display: none;
 }
 
-#h1 span:hover, #h2 span:hover {
+/* #h1 span:hover, #h2 span:hover {
     filter: opacity(0.7) !important;
-}
+} */
 #m1 {
     width: 25px;
     height: 16px;
@@ -305,8 +298,8 @@ form#or-hm::-webkit-scrollbar-button {
 #m8, #m39 {
     width: 28px;
     height: 20px;
-    left: 103px;
-    top: 113px;
+    left: 104px;
+    top: 112px;
     background-image: url("f_assets/body_active/us2.png");
 }
 #m39 {
@@ -750,6 +743,9 @@ form#or-hm input[type=button]:hover {
 }
 
 @media only screen and (max-width: 660px) {
+    #h1 span:hover, #h2 span:hover {
+        filter: opacity(0.15);	
+    }
     #hm{
         justify-content: space-around;
       }
