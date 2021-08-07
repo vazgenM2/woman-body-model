@@ -69,127 +69,127 @@ let pl = [
         price: 9600,
     },
     {
-        name: "Վերին շուրթ՝ 1500֏",
+        name: "Վերին շուրթ",
         p: ["v-shurt"],
         price: 1500,
     },
     {
-        name: "Ճակատ՝ 3500֏",
+        name: "Ճակատ",
         p: ["chakat"],
         price: 3500,
     },
     {
-        name: "Այտոսկրեր՝ 5000֏",
+        name: "Այտոսկրեր",
         p: ["aytoskrer"],
         price: 5000,
     },
     {
-        name: "Բակեր՝ 7000֏",
+        name: "Բակեր",
         p: ["baker"],
         price: 7000,
     },
     {
-        name: "Կզակ՝ 4000֏",
+        name: "Կզակ",
         p: ["kzak"],
         price: 4000,
     },
     {
-        name: "Պարանոց՝ 7000֏",
+        name: "Պարանոց",
         p: ["paranoc"],
         price: 7000,
     },
     {
-        name: "Ծոծրակ՝ 8000֏",
+        name: "Ծոծրակ",
         p: ["cocrak"],
         price: 8000,
     },
     {
-        name: "Ուսեր՝ 7000֏",
+        name: "Ուսեր",
         p: ["user"],
         price: 7000,
     },
     {
-        name: "Ձեռքեր՝ 16000֏",
+        name: "Ձեռքեր",
         p: ["dzerqer"],
         price: 16000,
     },
     {
-        name: "Բազուկներ՝ 7000֏",
+        name: "Բազուկներ",
         p: ["bazukner"],
         price: 7000,
     },
     {
-        name: "Նախաբազուկներ՝ 12000֏",
+        name: "Նախաբազուկներ",
         p: ["naxabazukner"],
         price: 12000,
     },
     {
-        name: "Մատներ՝ 2000֏",
+        name: "Մատներ",
         p: ["matner"],
         price: 2000,
     },
     {
-        name: "Թևատակեր՝ 6000֏",
+        name: "Թևատակեր",
         p: ["tevataker"],
         price: 6000,
     },
     {
-        name: "Դեկոլտե՝ 15000֏",
+        name: "Դեկոլտե",
         p: ["dekolte"],
         price: 15000,
     },
     {
-        name: "Կրծքեր՝ 15000֏",
+        name: "Կրծքեր",
         p: ["krcqer"],
         price: 15000,
     },
     {
-        name: "Կրծքավանդակ՝ 25000֏",
+        name: "Կրծքավանդակ",
         p: ["krcqavandak"],
         price: 25000,
     },
     {
-        name: "Մեջք՝ 32000֏",
+        name: "Մեջք",
         p: ["mejq"],
         price: 32000,
     },
     {
-        name: "Մեջքի 1/3 հատված՝ 12000֏",
+        name: "Մեջքի 1/3 հատված",
         p: ["mejq1/3"],
         price: 15000,
     },
     {
-        name: "Փոր՝ 24000֏",
+        name: "Փոր",
         p: ["por"],
         price: 24000,
     },
     {
-        name: "Փորի 1/3 հատված՝ 15000֏",
+        name: "Փորի 1/3 հատված",
         p: ["por1/3"],
         price: 12000,
     },
     {
-        name: "Բիկինի՝ 16000֏",
+        name: "Բիկինի",
         p: ["bikini"],
         price: 16000,
     },
     {
-        name: "Խորը բիկինի՝ 20000֏",
+        name: "Խորը բիկինի",
         p: ["x-bikini"],
         price: 20000,
     },
     {
-        name: "Նստատեղ՝ 20000֏",
+        name: "Նստատեղ",
         p: ["nstatex"],
         price: 20000,
     },
     {
-        name: "Ազդրեր՝ 30000֏",
+        name: "Ազդրեր",
         p: ["azdrer"],
         price: 30000,
     },
     {
-        name: "Սրունքներ՝ 25000֏",
+        name: "Սրունքներ",
         p: ["srunqner"],
         price: 25000,
     },
@@ -199,14 +199,9 @@ let pl = [
         price: 5000,
     },
     {
-        name: "Ոտքեր՝ 38000֏",
+        name: "Ոտքեր",
         p: ["votqer"],
         price: 38000,
-    },
-    {
-        name: "Ամբողջ մարմին՝ 90000֏ (Միայն Կոմիտաս 37 և Գայի պողոտա 16 | Megamall մասնաճյուղերում)",
-        p: ["all"],
-        price: 90000,
     },
 ]; // Price List
 
@@ -222,7 +217,7 @@ let ofl = [
         price: 11000,
     },
     {
-        name: "Դեմք + պարանոց + ծոծրակ՝ 12000֏",
+        name: "Դեմք + պարանոց + ծոծրակ",
         p: ["demq", "chakat", "paranoc", "cocrak"],
         price: 12000,
     },
@@ -339,6 +334,7 @@ for (let element of ae) {
                 ol.push("por");
                 fp -= 12000;
             }
+
         }
 
         // Offers \\
@@ -358,7 +354,24 @@ for (let element of ae) {
                 ofs.push(ofl[i]);
             }
         }
-
+        if (fp >= 90000) {
+            ofs.push({
+                name: "Ամբողջ մարմին՝ 90000֏ (Միայն Կոմիտաս 37 և Գայի պողոտա 16 | Megamall մասնաճյուղերում)",
+                price: 90000,
+            })
+        }
+        if (fp >= 45000 && ol.length == 2) {
+            ofs.push({
+                name: "Երկուսը միասին 45000",
+                price: 45000,
+            })
+        }
+        else if (fp >= 55000 && ol.length == 3) {
+            ofs.push({
+                name: "Երեքը միասին 55000",
+                price: 45000,
+            })
+        }
         ofe.innerHTML = "";
         for (let elem of ofs) {
             ofe.innerHTML += `
@@ -432,8 +445,8 @@ let showPlusMinus = 850
 window.addEventListener('mousemove', function (e) {
     if (window.innerWidth > showPlusMinus) {
         if (!e.target.classList.contains('body-part')) plusMinus.style.display = 'none'
-        else if (e.target.classList.contains('active')) plusMinus.innerHTML = '-'
-        else plusMinus.innerHTML = '+'
+        else if (e.target.classList.contains('active')) plusMinus.innerHTML = '<i class="fas fa-minus"></i> '
+        else plusMinus.innerHTML = '<i class="fas fa-plus"></i> '
     }
 })
 
@@ -451,6 +464,7 @@ bodyParts.map(part => {
 
 // =================================== DONE BUTTON
 
-document.querySelector('.done-btn').addEventListener('click', function () {
-    alert(fp)
+document.querySelector('.done-btn').addEventListener('click', function (e) {
+    e.preventDefault()
+    console.log([ol, ofs, fp]);
 })
