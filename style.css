@@ -243,11 +243,12 @@ form#or-hm::-webkit-scrollbar-button {
 }
 
 #m2 {
-    width: 27px;
-    height: 40px;
-    left: 4px;
-    top: 20px;
-    background-image: url("f_assets/body_active/demq.png");
+    width: 12px;
+    height: 11px;
+    left: 32px;
+    top: 28px;
+    transform: rotate(1deg);
+    background-image: url("f_assets/body_active/baker.png");
 }
 
 #m3, #m35 {

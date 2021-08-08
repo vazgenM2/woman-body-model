@@ -69,6 +69,12 @@ let pl = [
         price: 9600,
     },
     {
+        name: "Դեմք",
+        p: ["demq ev chakat"],
+        price: 10000,
+        text: "Դեմք <br> <small>*Այս գնի մեջ կարող է մտնել նաև պարանոցը</small>"
+    },
+    {
         name: "Վերին շուրթ",
         p: ["v-shurt"],
         price: 1500,
@@ -197,7 +203,7 @@ let pl = [
         name: "Ականջներ",
         text: 'Կատարվում է լուսարձակումով։ 1 լուսարձակումը` <br> Դեմքի հատվածում - 130 դր,<br> Մարմնի հատվածում - 100 դր,<br> Ձեռքերի և ոտքերի հատվածում - 30 դր:',
         p: ["akanjner"],
-        price: '',
+        price: 0,
     },
     {
         name: "Ոտքեր",
@@ -236,16 +242,22 @@ let cl = document.querySelector("#checkList #c");
 let ofe = document.querySelector("#offers");
 let ofs = []; // Offers
 let ofsArr = []
+let demqOfsArr = []
+let offerPrice = fp
+let demqParts = [0, false]
+
 
 for (let element of ae) {
     element.addEventListener("click", () => {
         let pn = element.querySelector("p.code");
 
-        // OFFERS
         ofs = [];
         ofsArr = []
+        offerPrice = 0
+
 
         if (element.classList.contains("active")) {
+
             for (let i in ol) {
                 if (ol[i] == pn.innerText) {
                     ol.splice(i, 1);
@@ -291,6 +303,159 @@ for (let element of ae) {
                 }
                 porC--;
             }
+            //  || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer'
+            for (let demqP of ['baker', 'v-shurt', 'aytoskrer', 'kzak', 'chakat']) {
+                if (pn.innerText == demqP) {
+                    if (demqParts[0] == 4 && !demqParts[1] || demqParts[0] == 5) {
+                        for (let i in ol) {
+                            if (ol[i] == "demq" && demqParts[0] == 4) {
+                                ol.splice(i, 1);
+                            }
+                            if (ol[i] == "demq ev chakat" && demqParts[0] == 5) {
+                                ol.splice(i, 1);
+                            }
+                        }
+                        if (demqParts[0] == 4) {
+                            if (demqP !== 'baker') ol.push("baker")
+                            if (demqP !== 'kzak') ol.push("kzak")
+                            if (demqP !== 'aytoskrer') ol.push("aytoskrer")
+                            if (demqP !== 'v-shurt') ol.push("v-shurt")
+                            fp += 7900;
+                            demqParts[0] = 4;
+                        }
+                        else if (demqParts[0] == 5 && demqP == 'chakat') {
+                            ol.push("demq");
+                            fp += 3100;
+                        } else {
+                            if (demqP !== 'baker') ol.push("baker")
+                            if (demqP !== 'kzak') ol.push("kzak")
+                            if (demqP !== 'aytoskrer') ol.push("aytoskrer")
+                            if (demqP !== 'v-shurt') ol.push("v-shurt")
+                            ol.push("chakat");
+                            fp += 11000;
+                            demqParts[0] = 5;
+                        }
+                    }
+                }
+            }
+
+            if (pn.innerText == 'baker' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer') {
+                demqParts[0]--
+            }
+            if (pn.innerText == 'chakat') {
+                demqParts[0]--
+                demqParts[1] = false
+            }
+
+            if (pn.innerText == 'paranoc' || pn.innerText == 'cocrak' || pn.innerText == 'chakat' || pn.innerText == 'baker' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer') {
+
+                if (demqOfsArr.includes('demq ev chakat') && demqOfsArr.includes('paranoc') && demqOfsArr.includes('cocrak') && demqOfsArr.length == 3) {
+                    if (pn.innerText == 'cocrak') {
+                        ofs[0] = {
+                            name: "Դեմք + պարանոց",
+                            price: 10000,
+                        }
+                        fp -= 7000
+                    }
+                    else if (pn.innerText == 'chakat') {
+                        ofs[0] = {
+                            name: "Դեմք առանց ճակատ + պարանոց + ծոծրակ",
+                            price: 11000,
+                        }
+                        fp -= 13600
+                    }
+                    else {
+                        ofs = []
+                    }
+                    fp += 13000
+                }
+                else if (demqOfsArr.includes('demq') && demqOfsArr.includes('paranoc') && demqOfsArr.includes('cocrak') && demqOfsArr.length == 3) {
+                    ofs = []
+                    fp += 13600
+                }
+                else if (demqOfsArr.includes('demq ev chakat') && demqOfsArr.includes('paranoc') && demqOfsArr.length == 2) {
+                    ofs = []
+                    fp += 7000
+                }
+
+                if (demqOfsArr.includes("demq ev chakat")) {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                }
+                if (pn.innerText == 'paranoc') {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "paranoc") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                }
+                if (pn.innerText == 'cocrak') {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "cocrak") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                }
+                if (pn.innerText == 'chakat') {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq ev chakat") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                    demqOfsArr.push('demq')
+                }
+                if (pn.innerText == 'baker') {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq ev chakat") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                }
+                if (pn.innerText == 'aytoskrer') {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq ev chakat") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                }
+                if (pn.innerText == 'v-shurt') {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq ev chakat") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                }
+                if (pn.innerText == 'kzak') {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq ev chakat") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                }
+            }
 
         } else {
             ol.push(pn.innerText);
@@ -314,6 +479,50 @@ for (let element of ae) {
             }
             if (pn.innerText == "por1/3") {
                 porC++;
+            }
+            if (pn.innerText == 'baker' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer') {
+                demqParts[0]++
+            }
+            if (pn.innerText == 'chakat') {
+                demqParts[0]++
+                demqParts[1] = true
+            }
+            if (pn.innerText == 'paranoc' || pn.innerText == 'cocrak' || pn.innerText == 'chakat' || pn.innerText == 'baker' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer') {
+                if (demqParts[0] == 4 && !demqParts[1] && pn.innerText !== 'paranoc' && pn.innerText !== 'cocrak') demqOfsArr.push('demq')
+                else if (demqParts[0] == 5 && pn.innerText !== 'paranoc' && pn.innerText !== 'cocrak') demqOfsArr.push('demq ev chakat')
+                else if (pn.innerText == 'paranoc') demqOfsArr.push('paranoc')
+                else if (pn.innerText == 'cocrak') demqOfsArr.push('cocrak')
+
+                if (demqOfsArr.includes("demq ev chakat") && pn.innerText == 'chakat') {
+                    for (let i in demqOfsArr) {
+                        if (demqOfsArr[i] == "demq") {
+                            demqOfsArr.splice(i, 1);
+                        }
+                    }
+                }
+                if (demqOfsArr.includes('demq ev chakat') && demqOfsArr.includes('paranoc') && demqOfsArr.includes('cocrak') && demqOfsArr.length == 3) {
+                    ofs[0] = {
+                        name: "Դեմք + պարանոց + ծոծրակ",
+                        price: 12000,
+                    }
+                    if (pn.innerText == 'cocrak') fp += 7000
+                    else if (pn.innerText == 'chakat') fp += 13600
+                    fp -= 13000
+                }
+                else if (demqOfsArr.includes('demq') && demqOfsArr.includes('paranoc') && demqOfsArr.includes('cocrak') && demqOfsArr.length == 3) {
+                    ofs[0] = {
+                        name: "Դեմք առանց ճակատ + պարանոց + ծոծրակ",
+                        price: 11000,
+                    }
+                    fp -= 13600
+                }
+                else if (demqOfsArr.includes('demq ev chakat') && demqOfsArr.includes('paranoc') && demqOfsArr.length == 2) {
+                    ofs[0] = {
+                        name: "Դեմք + պարանոց",
+                        price: 10000,
+                    }
+                    fp -= 7000
+                }
             }
 
             if (mejqC == 3 && pn.innerText == "mejq1/3") {
@@ -345,14 +554,74 @@ for (let element of ae) {
                 fp -= 12000;
             }
 
-        }
+            if (demqParts[0] == 4 && !demqParts[1] && (pn.innerText == 'baker' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer')) {
+                for (let i in ol) {
+                    if (ol[i] == "baker") {
+                        ol.splice(i, 1);
+                    }
+                }
+                for (let i in ol) {
+                    if (ol[i] == "kzak") {
+                        ol.splice(i, 1);
+                    }
+                }
+                for (let i in ol) {
+                    if (ol[i] == "v-shurt") {
+                        ol.splice(i, 1);
+                    }
+                }
+                for (let i in ol) {
+                    if (ol[i] == "aytoskrer") {
+                        ol.splice(i, 1);
+                    }
+                }
+                ol.push("demq");
+                fp -= 7900;
+            }
+            if (demqParts[0] == 5 && (pn.innerText == 'baker' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer' || pn.innerText == 'chakat')) {
+                for (let i in ol) {
+                    if (ol[i] == "baker") {
+                        ol.splice(i, 1);
+                    }
+                }
+                for (let i in ol) {
+                    if (ol[i] == "kzak") {
+                        ol.splice(i, 1);
+                    }
+                }
+                for (let i in ol) {
+                    if (ol[i] == "v-shurt") {
+                        ol.splice(i, 1);
+                    }
+                }
+                for (let i in ol) {
+                    if (ol[i] == "aytoskrer") {
+                        ol.splice(i, 1);
+                    }
+                }
+                for (let i in ol) {
+                    if (ol[i] == 'chakat') {
+                        ol.splice(i, 1);
+                    }
+                }
+                for (let i in ol) {
+                    if (ol[i] == "demq") {
+                        ol.splice(i, 1);
+                    }
+                }
 
+                ol.push('demq ev chakat')
+                if (pn.innerText == 'chakat') fp -= 3100
+                else fp -= 11000
+            }
+        }
+        // ======================================== OFFERS 
         if (fp >= 90000 && ol.length >= 4) {
             ofs[0] = {
                 name: "Ամբողջ մարմին (Միայն Կոմիտաս 37 և Գայի պողոտա 16 | Megamall մասնաճյուղերում)",
                 price: 90000,
             }
-            fp = 90000
+            offerPrice = 90000
             for (let el of ol) {
                 ofsArr.push(el)
             }
@@ -362,7 +631,7 @@ for (let element of ae) {
                 name: "Երկուսը միասին",
                 price: 45000,
             }
-            fp = 45000
+            offerPrice = 45000
             for (let el of ol) {
                 ofsArr.push(el)
             }
@@ -372,36 +641,35 @@ for (let element of ae) {
                 name: "Երեքը միասին",
                 price: 55000,
             }
-            fp = 55000
+            offerPrice = 55000
             for (let el of ol) {
                 ofsArr.push(el)
             }
         }
-        else if (ol.includes("chakat") && ol.includes("demq") && ol.includes("paranoc") && ol.includes("cocrak")) {
-            ofs[0] = {
-                name: "Դեմք + պարանոց + ծոծրակ",
-                price: 12000,
-            }
-            fp = 12000
-            ofsArr.push('chakat', "demq", "paranoc", "cocrak")
-        }
-        else if (ol.includes("demq") && ol.includes("paranoc") && ol.includes("cocrak")) {
-            ofs[0] = {
-                name: "Դեմք առանց ճակատի + պարանոց + ծոծրակ",
-                price: 11000,
-            }
-            fp = 11000
-            ofsArr.push("demq", "paranoc", "cocrak")
-        }
-        else if (ol.includes("demq") && ol.includes("paranoc") && ol.includes("chakat")) {
-            ofs[0] = {
-                name: "Դեմք + պարանոց",
-                price: 10000,
-            }
-            fp = 10000
-            ofsArr.push('chakat', "demq", "paranoc")
-        }
-
+        // else if (ol.includes("demq ev chakat") && ol.includes("paranoc") && ol.includes("cocrak")) {
+        //     ofs[0] = {
+        //         name: "Դեմք + պարանոց + ծոծրակ",
+        //         price: 12000,
+        //     }
+        //     fp -= 12000
+        //     // ofsArr.push("demq ev chakat", "paranoc", "cocrak")
+        // }
+        // else if (ol.includes("demq") && ol.includes("paranoc") && ol.includes("cocrak")) {
+        //     ofs[0] = {
+        //         name: "Դեմք առանց ճակատի + պարանոց + ծոծրակ",
+        //         price: 11000,
+        //     }
+        //     fp -= 11000
+        //     // ofsArr.push("demq", "paranoc", "cocrak")
+        // }
+        // else if (ol.includes("demq ev chakat") && ol.includes("paranoc")) {
+        //     ofs[0] = {
+        //         name: "Դեմք + պարանոց",
+        //         price: 10000,
+        //     }
+        //     fp = 10000
+        //     // ofsArr.push("demq ev chakat", "paranoc")
+        // }
 
         // for (let i in ofl) {
         //     let checked = 0;
@@ -417,7 +685,6 @@ for (let element of ae) {
         //         ofs.push(ofl[i]);
         //     }
         // }
-
         ofe.innerHTML = "";
         for (let elem of ofs) {
             ofe.innerHTML += `
@@ -442,7 +709,7 @@ for (let element of ae) {
                             ${(prd.text) ? prd.text : prd.name}
                         </p>
                         <p class="o-price${(prd.price) ? '' : '111'}">
-                            ${prd.price}
+                            ${(prd.price) ? prd.price : ''}
                         </p>
                     </div>  
                     `;
@@ -451,7 +718,8 @@ for (let element of ae) {
         }
 
         // Update Final Price \\
-        pfp.innerHTML = fp;
+        if (offerPrice !== 0) pfp.innerHTML = offerPrice
+        else pfp.innerHTML = fp;
 
     });
 }
@@ -466,8 +734,12 @@ document.querySelector('.clear-btn').addEventListener('click', function () {
     ofs.length = 0
     cl.innerHTML = ''
     fp = 0
-    pfp.innerHTML = '0 '
+    pfp.innerHTML = '0'
     ofe.innerHTML = ''
+    ofsArr = []
+    demqOfsArr = []
+    offerPrice = fp
+    demqParts = [0, false]
 })
 
 document.querySelector('.head').addEventListener('mouseenter', () => {
