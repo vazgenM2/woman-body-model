@@ -718,12 +718,14 @@ const bodyParts = [...document.querySelectorAll('#h1 span'), ...document.querySe
 let cursorX;
 let cursorY;
 let showPlusMinus = 850
+let plus = true
 
 window.addEventListener('mousemove', function (e) {
     if (window.innerWidth > showPlusMinus) {
         if (!e.target.classList.contains('body-part')) plusMinus.style.display = 'none'
         else if (e.target.classList.contains('active')) plusMinus.innerHTML = '<i class="fas fa-minus"></i>'
         else plusMinus.innerHTML = '<i class="fas fa-plus"></i>'
+        plus = !plus
     }
 })
 
@@ -738,9 +740,11 @@ bodyParts.map(part => {
             plusMinus.style.top = cursorY - 17 + 'px'
         }
     })
-    part.addEventListener('click', function () {
-        if (plusMinus.innerHTML == '<i class="fas fa-minus"></i>') plusMinus.innerHTML = '<i class="fas fa-plus"></i>'
-        if (plusMinus.innerHTML == '<i class="fas fa-plus"></i>') plusMinus.innerHTML == '<i class="fas fa-minus"></i>'
+    part.addEventListener('click', function (e) {
+        if (window.innerWidth > showPlusMinus) {
+            if (e.target.classList.contains('active')) plusMinus.innerHTML = '<i class="fas fa-minus"></i>'
+            else plusMinus.innerHTML = '<i class="fas fa-plus"></i>'
+        }
     })
 })
 
