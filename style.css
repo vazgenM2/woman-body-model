@@ -51,7 +51,7 @@ form#or-hm::-webkit-scrollbar-button {
     box-sizing: border-box;
     position: absolute;
     text-align: right;
-    width: 100px;
+    min-width: 10px;
     right: 5px;
     top: 10px;
     font-size: 90%;
