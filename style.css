@@ -229,6 +229,7 @@ form#or-hm::-webkit-scrollbar-button {
 
 #h1 span p.mn, #h2 span p.mn {
     display: none;
+    margin-right: 10px;
 }
 
 /* #h1 span:hover, #h2 span:hover {

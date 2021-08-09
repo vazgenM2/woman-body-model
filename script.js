@@ -646,45 +646,7 @@ for (let element of ae) {
                 ofsArr.push(el)
             }
         }
-        // else if (ol.includes("demq ev chakat") && ol.includes("paranoc") && ol.includes("cocrak")) {
-        //     ofs[0] = {
-        //         name: "Դեմք + պարանոց + ծոծրակ",
-        //         price: 12000,
-        //     }
-        //     fp -= 12000
-        //     // ofsArr.push("demq ev chakat", "paranoc", "cocrak")
-        // }
-        // else if (ol.includes("demq") && ol.includes("paranoc") && ol.includes("cocrak")) {
-        //     ofs[0] = {
-        //         name: "Դեմք առանց ճակատի + պարանոց + ծոծրակ",
-        //         price: 11000,
-        //     }
-        //     fp -= 11000
-        //     // ofsArr.push("demq", "paranoc", "cocrak")
-        // }
-        // else if (ol.includes("demq ev chakat") && ol.includes("paranoc")) {
-        //     ofs[0] = {
-        //         name: "Դեմք + պարանոց",
-        //         price: 10000,
-        //     }
-        //     fp = 10000
-        //     // ofsArr.push("demq ev chakat", "paranoc")
-        // }
-
-        // for (let i in ofl) {
-        //     let checked = 0;
-        //     let cg = ofl[i].p.length;
-        //     for (let k in ofl[i].p) {
-        //         for (let j in ol) {
-        //             if (ofl[i].p[k] == ol[j]) {
-        //                 checked++;
-        //             }
-        //         }
-        //     }
-        //     if (checked == cg) {
-        //         ofs.push(ofl[i]);
-        //     }
-        // }
+        
         ofe.innerHTML = "";
         for (let elem of ofs) {
             ofe.innerHTML += `
@@ -749,8 +711,7 @@ document.querySelector('.head').addEventListener('mouseleave', () => {
     document.querySelector('.cont').style.transform = 'scale(1) translate(0)'
 })
 
-// =====================================
-
+// ===================================== add and remove symbol
 const plusMinus = document.querySelector('#add-remove')
 const bodyParts = [...document.querySelectorAll('#h1 span'), ...document.querySelectorAll('#h2 span')]
 let cursorX;
@@ -765,6 +726,7 @@ window.addEventListener('mousemove', function (e) {
     }
 })
 
+// Show add or remove symbol near mouse
 bodyParts.map(part => {
     part.addEventListener('mousemove', function (e) {
         if (window.innerWidth > showPlusMinus) {
@@ -781,5 +743,7 @@ bodyParts.map(part => {
 
 document.querySelector('.done-btn').addEventListener('click', function (e) {
     e.preventDefault()
-    if (fp && ol.length) console.log([ol, fp]);
+    if (fp && ol.length) {    // =============================================== SEND MAIL HERE
+        console.log([ol, fp]);
+    }
 })
