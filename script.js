@@ -28,7 +28,7 @@ for (let element of back_hm) {                                                 /
 let ae = []; // All Elements
 let aeObj = {}; // Just Object for all Elements
 
-for (let i = 1; i <= 62; i++) {
+for (let i = 1; i <= 72; i++) {
     const e = document.querySelector(`#m${i}`);
     if (e != null) {
         ae.push(e)
@@ -72,7 +72,7 @@ let pl = [
         name: "Դեմք",
         p: ["demq ev chakat"],
         price: 10000,
-        text: "Դեմք <br> <small>*Այս գնի մեջ կարող է մտնել նաև պարանոցը</small>"
+        text: "Դեմք <br> <small>*Դեմքի ալեքսանդրիտային մազահեռացման արժեքը 10,000 դրամ է, որի մեջ ցանկության դեպքում կարող եք ներառել նաև պարանոցի հատվածը։</small>"
     },
     {
         name: "Վերին շուրթ",
@@ -201,7 +201,7 @@ let pl = [
     },
     {
         name: "Ականջներ",
-        text: 'Կատարվում է լուսարձակումով։ 1 լուսարձակումը` <br> Դեմքի հատվածում - 130 դր,<br> Մարմնի հատվածում - 100 դր,<br> Ձեռքերի և ոտքերի հատվածում - 30 դր:',
+        text: 'Ականջի շրջանում ալեքսանդրիտային մազահեռացումը կատարվում է առանձին լուսարձակումներով,<br>1 լուսարձակման արժեքը դեմքի շրջանում 130 դրամ է։<br>*Մարմնի շրջանում՝ 100 դրամ<br>*Ձեռքերի և ոտքերի շրջանում՝ 30 դրամ:',
         p: ["akanjner"],
         price: 0,
     },
@@ -209,6 +209,18 @@ let pl = [
         name: "Ոտքեր",
         p: ["votqer"],
         price: 38000,
+    },
+    {
+        name: "Ոտքեր",
+        p: ["amboxj-votqer"],
+        // metka -- Ոտքերի գին
+        price: 38000,
+    },
+    {
+        name: "Ձեռքեր",
+        p: ["amboxj-dzerqer"],
+        // metka -- Ձեռքերի գին
+        price: 16000,
     },
 ]; // Price List
 
@@ -255,8 +267,93 @@ for (let element of ae) {
         ofsArr = []
         offerPrice = 0
 
-
         if (element.classList.contains("active")) {
+
+            // metka 
+            if (pn.innerText == 'amboxj-votqer') {
+                document.querySelector('#m24').classList.remove('active')
+                document.querySelector('#m26').classList.remove('active')
+                document.querySelector('#m28').classList.remove('active')
+                document.querySelector('#m48').classList.remove('active')
+                document.querySelector('#m51').classList.remove('active')
+                document.querySelector('#m53').classList.remove('active')
+
+                document.querySelector('#m28').style.display = 'block'
+                document.querySelector('#m26').style.display = 'block'
+                document.querySelector('#m24').style.display = 'block'
+
+                document.querySelector('#m48').style.display = 'block'
+                document.querySelector('#m51').style.display = 'block'
+                document.querySelector('#m53').style.display = 'block'
+
+                document.querySelector('#m65').style.visibility = 'hidden'
+                document.querySelector('#m65').classList.remove('active')
+                document.querySelector('#m66').style.visibility = 'hidden'
+                document.querySelector('#m66').classList.remove('active')
+                for (let part in ol) {
+                    if (ol[part] == 'amboxj-votqer') ol.splice(part, 1)
+                }
+                for (let part in ol) {
+                    if (ol[part] == pn.innerText) ol.splice(part, 1)
+                }
+            }
+
+            if (pn.innerText == 'amboxj-dzerqer') {
+                document.querySelector('#m15').classList.remove('active')
+                document.querySelector('#m16').classList.remove('active')
+                document.querySelector('#m17').classList.remove('active')
+                document.querySelector('#m18').classList.remove('active')
+                document.querySelector('#m21').classList.remove('active')
+                document.querySelector('#m22').classList.remove('active')
+                document.querySelector('#m46').classList.remove('active')
+                document.querySelector('#m47').classList.remove('active')
+                document.querySelector('#m40').classList.remove('active')
+                document.querySelector('#m41').classList.remove('active')
+                document.querySelector('#m42').classList.remove('active')
+                document.querySelector('#m43').classList.remove('active')
+
+                document.querySelector('#m15').style.display = 'block'
+                document.querySelector('#m16').style.display = 'block'
+                document.querySelector('#m17').style.display = 'block'
+                document.querySelector('#m18').style.display = 'block'
+
+                document.querySelector('#m21').style.display = 'block'
+                document.querySelector('#m22').style.display = 'block'
+                document.querySelector('#m46').style.display = 'block'
+                document.querySelector('#m47').style.display = 'block'
+
+                document.querySelector('#m40').style.display = 'block'
+                document.querySelector('#m41').style.display = 'block'
+                document.querySelector('#m42').style.display = 'block'
+                document.querySelector('#m43').style.display = 'block'
+
+
+                document.querySelector('#m67').style.visibility = 'hidden'
+                document.querySelector('#m67').classList.remove('active')
+                document.querySelector('#m69').style.visibility = 'hidden'
+                document.querySelector('#m69').classList.remove('active')
+                document.querySelector('#m70').style.visibility = 'hidden'
+                document.querySelector('#m70').classList.remove('active')
+                document.querySelector('#m68').style.visibility = 'hidden'
+                document.querySelector('#m68').classList.remove('active')
+                for (let part in ol) {
+                    if (ol[part] == 'amboxj-dzerqer') ol.splice(part, 1)
+                }
+                for (let part in ol) {
+                    if (ol[part] == pn.innerText) ol.splice(part, 1)
+                }
+            }
+
+            if (pn.innerText == 'dekolte' || pn.innerText == 'krcqer') {
+                if (ol.includes('krcqavandak')) {
+                    if (pn.innerHTML == 'dekolte') ol.push('krcqer')
+                    else if (pn.innerHTML == 'krcqer') ol.push('dekolte')
+                    fp += 5000
+                    for (let part in ol) {
+                        if (ol[part] == 'krcqavandak') ol.splice(part, 1)
+                    }
+                }
+            }
 
             for (let i in ol) {
                 if (ol[i] == pn.innerText) {
@@ -303,7 +400,34 @@ for (let element of ae) {
                 }
                 porC--;
             }
-            //  || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer'
+
+            // metka dch
+            if (pn.innerText == 'demq') {
+                document.querySelector('#m71').style.visibility = 'hidden'
+                document.querySelector('#m71').classList.remove('active')
+
+                demqParts[0] = 0
+                document.querySelector('#m30').style.visibility = 'visible'
+                document.querySelector('#m31').style.visibility = 'visible'
+                document.querySelector('#m32').style.visibility = 'visible'
+                document.querySelector('#m34').style.visibility = 'visible'
+                document.querySelector('#m2').style.visibility = 'visible'
+            }
+
+            if (pn.innerText == 'demq ev chakat') {
+                document.querySelector('#m72').style.visibility = 'hidden'
+                document.querySelector('#m72').classList.remove('active')
+
+                document.querySelector('#m71').style.visibility = 'visible'
+                document.querySelector('#m71').classList.add('active')
+                document.querySelector('#m1').style.visibility = 'visible'
+                document.querySelector('#m1').classList.remove('active')
+                ol.push('demq')
+                demqParts[1] = false
+                fp += 9600
+            }
+
+
             for (let demqP of ['baker', 'v-shurt', 'aytoskrer', 'kzak', 'chakat']) {
                 if (pn.innerText == demqP) {
                     if (demqParts[0] == 4 && !demqParts[1] || demqParts[0] == 5) {
@@ -316,21 +440,22 @@ for (let element of ae) {
                             }
                         }
                         if (demqParts[0] == 4) {
-                            if (demqP !== 'baker') ol.push("baker")
-                            if (demqP !== 'kzak') ol.push("kzak")
-                            if (demqP !== 'aytoskrer') ol.push("aytoskrer")
-                            if (demqP !== 'v-shurt') ol.push("v-shurt")
+                            // if (demqP !== 'baker') ol.push("baker")
+                            // if (demqP !== 'kzak') ol.push("kzak")
+                            // if (demqP !== 'aytoskrer') ol.push("aytoskrer")
+                            // if (demqP !== 'v-shurt') ol.push("v-shurt")
                             fp += 7900;
-                            demqParts[0] = 4;
+                            // demqParts[0] = 4; last code ->
+                            demqParts[0] = 0;
                         }
                         else if (demqParts[0] == 5 && demqP == 'chakat') {
                             ol.push("demq");
                             fp += 3100;
                         } else {
-                            if (demqP !== 'baker') ol.push("baker")
-                            if (demqP !== 'kzak') ol.push("kzak")
-                            if (demqP !== 'aytoskrer') ol.push("aytoskrer")
-                            if (demqP !== 'v-shurt') ol.push("v-shurt")
+                            // if (demqP !== 'baker') ol.push("baker")
+                            // if (demqP !== 'kzak') ol.push("kzak")
+                            // if (demqP !== 'aytoskrer') ol.push("aytoskrer")
+                            // if (demqP !== 'v-shurt') ol.push("v-shurt")
                             ol.push("chakat");
                             fp += 11000;
                             demqParts[0] = 5;
@@ -468,11 +593,125 @@ for (let element of ae) {
             }
             element.classList.add("active")
 
+            if (ol.includes('krcqer') && pn.innerText == 'dekolte' ||
+                ol.includes('dekolte') && pn.innerText == 'krcqer') {
+                ol.push('krcqavandak')
+                fp -= 5000
+                for (let part in ol) {
+                    if (ol[part] == 'krcqer') ol.splice(part, 1)
+                }
+                for (let part in ol) {
+                    if (ol[part] == 'dekolte') ol.splice(part, 1)
+                }
+            }
+
+            // metka 
+            if (ol.includes('azdrer') && pn.innerText == 'srunqner'
+                || ol.includes('srunqner') && pn.innerText == 'azdrer') {
+                document.querySelector('#m28').style.display = 'none'
+                document.querySelector('#m26').style.display = 'none'
+                document.querySelector('#m24').style.display = 'none'
+
+                document.querySelector('#m48').style.display = 'none'
+                document.querySelector('#m51').style.display = 'none'
+                document.querySelector('#m53').style.display = 'none'
+
+                document.querySelector('#m65').style.visibility = 'visible'
+                document.querySelector('#m65').classList.add('active')
+                document.querySelector('#m66').style.visibility = 'visible'
+                document.querySelector('#m66').classList.add('active')
+                ol.push('amboxj-votqer')
+                fp += 38000
+
+                for (let part in ol) {
+                    if (ol[part] == 'votqer') {
+                        ol.splice(part, 1)
+                        fp -= 38000
+                    }
+                }
+                for (let part in ol) {
+                    if (ol[part] == 'srunqner') {
+                        ol.splice(part, 1)
+                        fp -= 25000
+                    }
+                }
+                for (let part in ol) {
+                    if (ol[part] == 'azdrer') {
+                        ol.splice(part, 1)
+                        fp -= 30000
+                    }
+                }
+            }
+            if (ol.includes('bazukner') && pn.innerText == 'naxabazukner'
+                || ol.includes('naxabazukner') && pn.innerText == 'bazukner') {
+                document.querySelector('#m21').style.display = 'none'
+                document.querySelector('#m22').style.display = 'none'
+                document.querySelector('#m46').style.display = 'none'
+                document.querySelector('#m47').style.display = 'none'
+
+                document.querySelector('#m15').style.display = 'none'
+                document.querySelector('#m16').style.display = 'none'
+                document.querySelector('#m40').style.display = 'none'
+                document.querySelector('#m41').style.display = 'none'
+
+                document.querySelector('#m17').style.display = 'none'
+                document.querySelector('#m18').style.display = 'none'
+                document.querySelector('#m42').style.display = 'none'
+                document.querySelector('#m43').style.display = 'none'
+
+                document.querySelector('#m67').style.visibility = 'visible'
+                document.querySelector('#m67').classList.add('active')
+                document.querySelector('#m69').style.visibility = 'visible'
+                document.querySelector('#m69').classList.add('active')
+                document.querySelector('#m70').style.visibility = 'visible'
+                document.querySelector('#m70').classList.add('active')
+                document.querySelector('#m68').style.visibility = 'visible'
+                document.querySelector('#m68').classList.add('active')
+                ol.push('amboxj-dzerqer')
+                fp += 16000
+
+                for (let part in ol) {
+                    if (ol[part] == 'matner') {
+                        ol.splice(part, 1)
+                        fp -= 2000
+                    }
+                }
+                for (let part in ol) {
+                    if (ol[part] == 'bazukner') {
+                        ol.splice(part, 1)
+                        fp -= 7000
+                    }
+                }
+                for (let part in ol) {
+                    if (ol[part] == 'naxabazukner') {
+                        ol.splice(part, 1)
+                        fp -= 12000
+                    }
+                }
+            }
+
             for (let elem of pl) {
                 if (elem.p[0] == pn.innerText) {
                     fp += elem.price;
                 }
             }
+            // metka 
+            // if (ol.includes('azdrer') && ol.includes('srunqner') && pn.innerText == 'votqer') {
+            //     fp -= 38000
+            // } else if (ol.includes('votqer') && ol.includes('srunqner') && pn.innerText == 'azdrer') {
+            //     fp -= 38000
+            // } else if (ol.includes('azdrer') && ol.includes('votqer') && pn.innerText == 'srunqner') {
+            //     fp -= 38000
+            // }
+
+            // if (ol.includes('bazukner') && ol.includes('srunqner') && pn.innerText == 'votqer') {
+            //     fp -= 38000
+            // } else if (ol.includes('votqer') && ol.includes('srunqner') && pn.innerText == 'azdrer') {
+            //     fp -= 38000
+            // } else if (ol.includes('azdrer') && ol.includes('votqer') && pn.innerText == 'srunqner') {
+            //     fp -= 38000
+            // }
+
             if (pn.innerText == "mejq1/3") {
                 mejqC++;
             }
@@ -486,9 +725,56 @@ for (let element of ae) {
                 demqParts[0]++
                 demqParts[1] = true
             }
+            // metka dch
             if (pn.innerText == 'paranoc' || pn.innerText == 'cocrak' || pn.innerText == 'chakat' || pn.innerText == 'baker' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer') {
-                if (demqParts[0] == 4 && !demqParts[1] && pn.innerText !== 'paranoc' && pn.innerText !== 'cocrak') demqOfsArr.push('demq')
-                else if (demqParts[0] == 5 && pn.innerText !== 'paranoc' && pn.innerText !== 'cocrak') demqOfsArr.push('demq ev chakat')
+                if (demqParts[0] == 4 && !demqParts[1] && pn.innerText !== 'paranoc' && pn.innerText !== 'cocrak') {
+                    demqOfsArr.push('demq')
+                    document.querySelector('#m30').style.visibility = 'hidden'
+                    document.querySelector('#m31').style.visibility = 'hidden'
+                    document.querySelector('#m32').style.visibility = 'hidden'
+                    document.querySelector('#m34').style.visibility = 'hidden'
+                    document.querySelector('#m2').style.visibility = 'hidden'
+
+                    document.querySelector('#m30').classList.remove('active')
+                    document.querySelector('#m31').classList.remove('active')
+                    document.querySelector('#m2').classList.remove('active')
+                    document.querySelector('#m32').classList.remove('active')
+                    document.querySelector('#m34').classList.remove('active')
+
+                    document.querySelector('#m71').classList.add('active')
+                    document.querySelector('#m71').style.visibility = 'visible'
+                    // demqParts[0] = 0
+
+                    for (let part in ol) {
+                        if (ol[part] == 'aytoskrer') ol.splice(part, 1)
+                    }
+                    for (let part in ol) {
+                        if (ol[part] == 'kzak') ol.splice(part, 1)
+                    }
+                    for (let part in ol) {
+                        if (ol[part] == 'v-shurt') ol.splice(part, 1)
+                    }
+                    for (let part in ol) {
+                        if (ol[part] == 'baker') ol.splice(part, 1)
+                    }
+                }
+                else if (demqParts[0] == 5 && pn.innerText !== 'paranoc' && pn.innerText !== 'cocrak') {
+                    document.querySelector('#m72').style.visibility = 'visible'
+                    document.querySelector('#m72').classList.add('active')
+                    document.querySelector('#m71').style.visibility = 'hidden'
+                    document.querySelector('#m1').style.visibility = 'hidden'
+
+                    demqOfsArr.push('demq ev chakat')
+                    // if (pn.innerText == 'chakat') fp += 400
+                    // else fp += 10000
+
+                    for (let part in ol) {
+                        if (ol[part] == 'demq') ol.splice(part, 1)
+                    }
+                    for (let part in ol) {
+                        if (ol[part] == 'chakat') ol.splice(part, 1)
+                    }
+                }
                 else if (pn.innerText == 'paranoc') demqOfsArr.push('paranoc')
                 else if (pn.innerText == 'cocrak') demqOfsArr.push('cocrak')
 
@@ -499,6 +785,7 @@ for (let element of ae) {
                         }
                     }
                 }
+                // metka
                 if (demqOfsArr.includes('demq ev chakat') && demqOfsArr.includes('paranoc') && demqOfsArr.includes('cocrak') && demqOfsArr.length == 3) {
                     ofs[0] = {
                         name: "Դեմք + պարանոց + ծոծրակ",
@@ -614,7 +901,7 @@ for (let element of ae) {
                 else fp -= 11000
             }
         }
-        // ======================================== OFFERS 
+        // ======================================== OFFERS
         if (fp >= 90000 && ol.length >= 4) {
             ofs[0] = {
                 name: "Ամբողջ մարմին (Միայն Կոմիտաս 37 և Գայի պողոտա 16 | Megamall մասնաճյուղերում)",
@@ -625,7 +912,9 @@ for (let element of ae) {
                 ofsArr.push(el)
             }
         }
-        else if (fp >= 45000 && ol.length == 2) {
+        // metka
+        else if (fp >= 45000 && ol.length == 2 || (ol.includes('azdrer') &&
+            ol.includes('votqer') && ol.includes('srunqner'))) {
             ofs[0] = {
                 name: "Երկուսը միասին",
                 price: 45000,
@@ -636,13 +925,15 @@ for (let element of ae) {
             }
         }
         else if (fp >= 55000 && ol.length == 3) {
-            ofs[0] = {
-                name: "Երեքը միասին",
-                price: 55000,
-            }
-            offerPrice = 55000
-            for (let el of ol) {
-                ofsArr.push(el)
+            if (!ol.includes('azdrer') && !ol.includes('votqer') && !ol.includes('srunqner')) {
+                ofs[0] = {
+                    name: "Երեքը միասին",
+                    price: 55000,
+                }
+                offerPrice = 55000
+                for (let el of ol) {
+                    ofsArr.push(el)
+                }
             }
         }
 
@@ -672,7 +963,7 @@ for (let element of ae) {
                         <p class="o-price${(prd.price) ? '' : '111'}">
                             ${(prd.price) ? prd.price : ''}
                         </p>
-                    </div>  
+                    </div>
                     `;
                 }
             }
@@ -687,7 +978,9 @@ for (let element of ae) {
 
 // =========== CLEAR ALL PARTS
 
-document.querySelector('.clear-btn').addEventListener('click', function () {
+document.querySelector('.clear-btn').addEventListener('click', function (e) {
+    // metka
+    e.preventDefault();
     ae.map(el => {
         el.classList.remove('active')
     })
@@ -754,7 +1047,10 @@ bodyParts.map(part => {
 
 document.querySelector('.done-btn').addEventListener('click', function (e) {
     e.preventDefault()
-    if (fp && ol.length) {    // =============================================== SEND MAIL HERE
+
+    if (fp && ol.length) {
+        document.querySelector('.yButton').click();
+        // =============================================== SEND MAIL HERE
         console.log([ol, fp]);
     }
 })
