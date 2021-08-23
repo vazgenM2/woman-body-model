@@ -494,20 +494,14 @@ form#or-hm::-webkit-scrollbar-button {
     background-image: url("f_assets/body_active_back/matner1.png");
 }
 #m23, #m48 {
-    width: 33px;
-    height: 105px;
-    left: 64px;
-    top: 257px;
-    background-image: url("f_assets/body_active/lyashka.png");
-}
-#m48 {
-    top: 250px;
     width: 76px;
+    height: 105px;
+    top: 255px;
     left: 52.5px;
-    background-image: url("f_assets/body_active_back/azdrer.png");
+    background-image: url("f_assets/body_active_back/azdrer.png"); */
 }
 #m24, #m49 {
- width: 120px;
+    width: 120px;
     height: 83px;
     right: 28px;
     top: 233px;

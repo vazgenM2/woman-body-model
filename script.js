@@ -103,11 +103,13 @@ let pl = [
         name: "Պարանոց",
         p: ["paranoc"],
         price: 7000,
+        text: 'Պարանոց <br/> <small>Վճարելով 12,000 դրամ՝ պարանոցի ալեքսանդրիտային լազերային մազահեռացման մեջ կարող եք ներառել նաև դեմքի շրջանը</small>'
     },
     {
         name: "Ծոծրակ",
         p: ["cocrak"],
         price: 8000,
+        text: 'Ծոծրակ <br/> <small>Վճարելով 12,000 դրամ՝ պարանոցի ալեքսանդրիտային լազերային մազահեռացման մեջ կարող եք կատարել նաև պարանոցի և դեմքի ամբողջական մազահեռացում</small>'
     },
     {
         name: "Ուսեր",
@@ -206,9 +208,10 @@ let pl = [
         price: 0,
     },
     {
-        name: "Ոտքեր",
+        name: "Ոտնաթաթեր",
         p: ["votqer"],
-        price: 38000,
+        price: 0,
+        text: 'Ոտնաթաթի շրջանում մազահեռացումը կատարվում է առանձին լուսարձակումներով`<br />1 լուսարձակման արժեքը 30 դրամ է։'
     },
     {
         name: "Ոտքեր",
@@ -247,6 +250,7 @@ let ofl = [
 
 let ol = []; // Order List
 let fp = 0; // Final Price
+let demqPrice = 0 // Face's parts all price
 let mejqC = 0;
 let porC = 0;
 let pfp = document.querySelector("p#finalPrice");
@@ -344,6 +348,13 @@ for (let element of ae) {
                 }
             }
 
+            if (pn.innerText == 'bikini') {
+                for (let part in ol) {
+                    if (ol[part] == 'x-bikini') ol.splice(part, 1)
+                }
+                fp -= 20000
+            }
+
             if (pn.innerText == 'dekolte' || pn.innerText == 'krcqer') {
                 if (ol.includes('krcqavandak')) {
                     if (pn.innerHTML == 'dekolte') ol.push('krcqer')
@@ -371,6 +382,10 @@ for (let element of ae) {
             for (let elem of pl) {
                 if (elem.p[0] == pn.innerText) {
                     fp -= elem.price;
+                }
+                if (pn.innerText == 'chakat' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' ||
+                    pn.innerText == 'baker' || pn.innerText == 'aytoskrer') {
+                    if (pn.innerText == elem.p[0]) demqPrice -= elem.price;
                 }
             }
 
@@ -407,6 +422,7 @@ for (let element of ae) {
                 document.querySelector('#m71').classList.remove('active')
 
                 demqParts[0] = 0
+                demqPrice = 0
                 document.querySelector('#m30').style.visibility = 'visible'
                 document.querySelector('#m31').style.visibility = 'visible'
                 document.querySelector('#m32').style.visibility = 'visible'
@@ -423,7 +439,9 @@ for (let element of ae) {
                 document.querySelector('#m1').style.visibility = 'visible'
                 document.querySelector('#m1').classList.remove('active')
                 ol.push('demq')
+                demqPrice = 0
                 demqParts[1] = false
+                demqParts[0] = 4
                 fp += 9600
             }
 
@@ -593,6 +611,11 @@ for (let element of ae) {
             }
             element.classList.add("active")
 
+            if (pn.innerText == 'bikini') {
+                ol.push('x-bikini')
+                fp += 20000
+            }
+
             if (ol.includes('krcqer') && pn.innerText == 'dekolte' ||
                 ol.includes('dekolte') && pn.innerText == 'krcqer') {
                 ol.push('krcqavandak')
@@ -694,7 +717,54 @@ for (let element of ae) {
                 if (elem.p[0] == pn.innerText) {
                     fp += elem.price;
                 }
+                if (pn.innerText == 'chakat' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' ||
+                    pn.innerText == 'baker' || pn.innerText == 'aytoskrer') {
+                    if (pn.innerText == elem.p[0]) demqPrice += elem.price;
+                }
             }
+
+            if (pn.innerText == 'chakat' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' ||
+                pn.innerText == 'baker' || pn.innerText == 'aytoskrer') {
+                if (demqParts[0] >= 4) {
+                    document.querySelector('#m1').classList.remove('active')
+                    document.querySelector('#m2').classList.remove('active')
+                    document.querySelector('#m30').classList.remove('active')
+                    document.querySelector('#m31').classList.remove('active')
+                    document.querySelector('#m34').classList.remove('active')
+                    document.querySelector('#m32').classList.remove('active')
+                }
+                if (demqPrice >= 10000) {
+                    document.querySelector('#m1').classList.remove('active')
+                    document.querySelector('#m2').classList.remove('active')
+                    document.querySelector('#m30').classList.remove('active')
+                    document.querySelector('#m31').classList.remove('active')
+                    document.querySelector('#m34').classList.remove('active')
+                    document.querySelector('#m32').classList.remove('active')
+
+                    if (!ol.includes('demq ev chakat')) ol.push('demq ev chakat')
+                    document.querySelector('#m72').classList.add('active')
+                    document.querySelector('#m72').style.visibility = 'visible'
+
+                    for (let part in ol) {
+                        if (ol[part] == 'kzak') ol.splice(part, 1)
+                    }
+                    for (let part in ol) {
+                        if (ol[part] == 'aytoskrer') ol.splice(part, 1)
+                    }
+                    for (let part in ol) {
+                        if (ol[part] == 'baker') ol.splice(part, 1)
+                    }
+                    for (let part in ol) {
+                        if (ol[part] == 'v-shurt') ol.splice(part, 1)
+                    }
+                    for (let part in ol) {
+                        if (ol[part] == 'chakat') ol.splice(part, 1)
+                    }
+
+                    fp -= demqPrice - 10000
+                }
+            }
+
             // metka 
             // if (ol.includes('azdrer') && ol.includes('srunqner') && pn.innerText == 'votqer') {
             //     fp -= 38000
@@ -728,7 +798,7 @@ for (let element of ae) {
             // metka dch
             if (pn.innerText == 'paranoc' || pn.innerText == 'cocrak' || pn.innerText == 'chakat' || pn.innerText == 'baker' || pn.innerText == 'kzak' || pn.innerText == 'v-shurt' || pn.innerText == 'aytoskrer') {
                 if (demqParts[0] == 4 && !demqParts[1] && pn.innerText !== 'paranoc' && pn.innerText !== 'cocrak') {
-                    demqOfsArr.push('demq')
+                    if (!ol.includes('demq')) demqOfsArr.push('demq')
                     document.querySelector('#m30').style.visibility = 'hidden'
                     document.querySelector('#m31').style.visibility = 'hidden'
                     document.querySelector('#m32').style.visibility = 'hidden'
@@ -764,9 +834,9 @@ for (let element of ae) {
                     document.querySelector('#m71').style.visibility = 'hidden'
                     document.querySelector('#m1').style.visibility = 'hidden'
 
-                    demqOfsArr.push('demq ev chakat')
+                    if (!ol.includes('demq ev chakat')) demqOfsArr.push('demq ev chakat')
                     // if (pn.innerText == 'chakat') fp += 400
-                    // else fp += 10000
+                    // fp += 11000
 
                     for (let part in ol) {
                         if (ol[part] == 'demq') ol.splice(part, 1)
@@ -896,9 +966,11 @@ for (let element of ae) {
                     }
                 }
 
-                ol.push('demq ev chakat')
-                if (pn.innerText == 'chakat') fp -= 3100
-                else fp -= 11000
+                if (!ol.includes('demq ev chakat')) {
+                    ol.push('demq ev chakat')
+                    if (pn.innerText == 'chakat') fp -= 3100
+                    else fp -= 11000
+                }
             }
         }
         // ======================================== OFFERS
@@ -988,6 +1060,44 @@ document.querySelector('.clear-btn').addEventListener('click', function (e) {
     ofs.length = 0
     cl.innerHTML = ''
     fp = 0
+    demqPrice = 0
+    document.querySelector('#m71').style.visibility = 'hidden'
+    document.querySelector('#m66').style.visibility = 'hidden'
+    document.querySelector('#m67').style.visibility = 'hidden'
+    document.querySelector('#m68').style.visibility = 'hidden'
+    document.querySelector('#m69').style.visibility = 'hidden'
+    document.querySelector('#m70').style.visibility = 'hidden'
+    document.querySelector('#m65').style.visibility = 'hidden'
+    document.querySelector('#m72').style.visibility = 'hidden'
+    document.querySelector('#m71').classList.remove('active')
+    document.querySelector('#m72').classList.remove('active')
+    document.querySelector('#m65').classList.remove('active')
+    document.querySelector('#m67').classList.remove('active')
+    document.querySelector('#m69').classList.remove('active')
+    document.querySelector('#m68').classList.remove('active')
+    document.querySelector('#m70').classList.remove('active')
+    document.querySelector('#m66').classList.remove('active')
+
+    document.querySelector('#m15').style.display = 'block'
+    document.querySelector('#m16').style.display = 'block'
+    document.querySelector('#m17').style.display = 'block'
+    document.querySelector('#m18').style.display = 'block'
+    document.querySelector('#m40').style.display = 'block'
+    document.querySelector('#m41').style.display = 'block'
+    document.querySelector('#m42').style.display = 'block'
+    document.querySelector('#m43').style.display = 'block'
+    document.querySelector('#m21').style.display = 'block'
+    document.querySelector('#m22').style.display = 'block'
+    document.querySelector('#m46').style.display = 'block'
+    document.querySelector('#m47').style.display = 'block'
+
+    document.querySelector('#m24').style.display = 'block'
+    document.querySelector('#m26').style.display = 'block'
+    document.querySelector('#m48').style.display = 'block'
+    document.querySelector('#m51').style.display = 'block'
+    document.querySelector('#m28').style.display = 'block'
+    document.querySelector('#m53').style.display = 'block'
+
     pfp.innerHTML = '0'
     ofe.innerHTML = ''
     mejqC = 0
